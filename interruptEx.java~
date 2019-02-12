@@ -1,0 +1,23 @@
+public class interruptEx{
+
+    public static void main(String[] args){
+
+	System.out.println();
+	Thread t = Thread.currentThread();
+	t.interrupt();
+	if(Thread.interrupted()){
+
+	    //...something here
+	    //if the current thread is interrupted
+
+	}
+	if(t.isInterrupted()){
+
+	    //...something here
+	    //if thread 't' is interrupted
+
+	}
+	
+    }
+
+}

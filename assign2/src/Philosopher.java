@@ -11,10 +11,14 @@ public class Philosopher implements Runnable{
     public void run(){
 
 	int i = 0;
-	while(i < 100){
-
-	    System.out.println(i);
-	    i++;
+	while(!stop){
+		if(Driver.waiter(fork1,fork2)==true){		  
+	    		meals++;
+			Driver.releaseForks(fork1,fork2);
+		}		
+		else
+			thoughts++;
+		
 	}
 
     }

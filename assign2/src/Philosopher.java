@@ -17,6 +17,7 @@ public class Philosopher implements Runnable{//Philosopher objects that implemen
     private boolean stop;//run loop stop flag
     private long critTime;//time spent checking if the forks and available and possible picking them up
     private long tempTime;//time in critical section for each loop iteration
+
     public void run(){//called when thread.start is called in main
 
 	//init loop vars
@@ -108,4 +109,5 @@ public class Philosopher implements Runnable{//Philosopher objects that implemen
 	return this.critTime;
 
     }
+    
 }

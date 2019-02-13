@@ -26,6 +26,7 @@ public class Driver{//Driver that holds main method
 	    return;//exit
 	    
 	}
+	
 	try{//try to parse input args
 	    
 	    sleepTime = Integer.parseInt(args[0]);
@@ -37,6 +38,7 @@ public class Driver{//Driver that holds main method
 	    return;//exit
 	    
 	}
+	
 	//create the philosopher objects
 	Philosopher alpha = new Philosopher("alpha",0,1);
 	Philosopher bravo = new Philosopher("bravo",1,2);
@@ -127,6 +129,7 @@ public class Driver{//Driver that holds main method
 	    return false;
 	
     }
+    
     public static void releaseForks(int Fork1, int Fork2){//put down the forks
 	
 	forks[Fork1].setStatus(true);

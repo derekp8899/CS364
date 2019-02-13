@@ -23,8 +23,8 @@ public class Philosopher implements Runnable{
 		tempTime = System.nanoTime() - tempTime;
 		critTime += tempTime;
 		meals++;
-		Driver.releaseForks(fork1,fork2);
 		System.out.println(name + " is eating");
+		Driver.releaseForks(fork1,fork2);
 
 	    }		
 	    else{
@@ -36,7 +36,7 @@ public class Philosopher implements Runnable{
 
 	    }
 		
-	}
+ 	}
 
 	time = System.nanoTime() - time;
 	

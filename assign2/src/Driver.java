@@ -68,40 +68,40 @@ public class Driver{
 
 	    Thread.sleep(1);//ensure all threads exit before printing stats
 	    
-	    System.out.println("-Aplha Stats-");
+	    System.out.println("-Alpha Stats-");
 	    System.out.println("  Thoughts: " + alpha.getThoughts() + " Meals: " + alpha.getMeals());
 	    System.out.println("  Total time (ns): " + alpha.getTime());
-	    System.out.println("  Critial time (ns): " + alpha.getCritTime());
+	    System.out.println("  Critical time (ns): " + alpha.getCritTime());
 	    double ratio =(double) alpha.getCritTime() / alpha.getTime();
-	    System.out.println("  Time ratio Critcal / Total: " + ratio);
+	    System.out.println("  Time ratio Critical / Total: " + ratio);
 
 	    System.out.println("-Bravo Stats-");
 	    System.out.println("  Thoughts: " + bravo.getThoughts() + " Meals: " + bravo.getMeals());
 	    System.out.println("  Total time (ns): " + bravo.getTime());
-	    System.out.println("  Critial time (ns): " + bravo.getCritTime());
+	    System.out.println("  Critical time (ns): " + bravo.getCritTime());
 	    ratio =(double) bravo.getCritTime() / bravo.getTime();
-	    System.out.println("  Time ratio Critcal / Total: " + ratio);
+	    System.out.println("  Time ratio Critical / Total: " + ratio);
 	    
 	    System.out.println("-Charlie Stats-");
 	    System.out.println("  Thoughts: " + charlie.getThoughts() + " Meals: " + charlie.getMeals());
 	    System.out.println("  Total time (ns): " + charlie.getTime());
-	    System.out.println("  Critial time (ns): " + charlie.getCritTime());
+	    System.out.println("  Critical time (ns): " + charlie.getCritTime());
 	    ratio =(double) charlie.getCritTime() / charlie.getTime();
-	    System.out.println("  Time ratio Critcal / Total: " + ratio);
+	    System.out.println("  Time ratio Critical / Total: " + ratio);
 	    
 	    System.out.println("-Delta Stats-");
 	    System.out.println("  Thoughts: " + delta.getThoughts() + " Meals: " + delta.getMeals());
 	    System.out.println("  Total time (ns): " + delta.getTime());
-	    System.out.println("  Critial time (ns): " + delta.getCritTime());
+	    System.out.println("  Critical time (ns): " + delta.getCritTime());
 	    ratio =(double) delta.getCritTime() / delta.getTime();
-	    System.out.println("  Time ratio Critcal / Total: " + ratio);
+	    System.out.println("  Time ratio Critical / Total: " + ratio);
 
 	    System.out.println("-Echo Stats-");
 	    System.out.println("  Thoughts: " + echo.getThoughts() + " Meals: " + echo.getMeals());
 	    System.out.println("  Total time (ns): " + echo.getTime());
-	    System.out.println("  Critial time (ns): " + echo.getCritTime());
+	    System.out.println("  Critical time (ns): " + echo.getCritTime());
 	    ratio =(double) echo.getCritTime() / echo.getTime();
-	    System.out.println("  Time ratio Critcal / Total: " + ratio);
+	    System.out.println("  Time ratio Critical / Total: " + ratio);
 	    	    
 	}
     

@@ -1,48 +1,58 @@
-import java.util.concurrent.TimeUnit;
+/*
 
-public class Philosopher implements Runnable{
+Derek Popowski
+derek.a.popowski@und.edu
+CSci 364
+Assignment 2
+Philosopher object
 
-    private String name;
-    private int fork1, fork2;
-    private int thoughts, meals;
-    private long time;
-    private boolean stop;
-    private long critTime;
-    private long tempTime;
-    public void run(){
+*/
 
-	int i = 0;
+public class Philosopher implements Runnable{//Philosopher objects that implement Runnable interface
+
+    private String name;//philosopher's name
+    private int fork1, fork2;//the 'left' and 'right' forks needed to eat
+    private int thoughts, meals;//counters for thoughts and meals
+    private long time;//total time the thread is run
+    private boolean stop;//run loop stop flag
+    private long critTime;//time spent checking if the forks and available and possible picking them up
+    private long tempTime;//time in critical section for each loop iteration
+    public void run(){//called when thread.start is called in main
+
+	//init loop vars
 	tempTime = 0;
 	critTime = 0;
 	time = System.nanoTime();
-	while(!stop){
-	    
-	    tempTime = System.nanoTime();
-	    if(Driver.waiter(fork1,fork2)==true){
 
-		tempTime = System.nanoTime() - tempTime;
-		critTime += tempTime;
-		meals++;
-		System.out.println(name + " is eating");
-		Driver.releaseForks(fork1,fork2);
+	while(!stop){//while stop condition is not set in main
 
-	    }		
-	    else{
+	    thoughts++;//inc thought counter
+	    System.out.println(name + " is thinking");//used for time variance
+	    tempTime = System.nanoTime();//start timer for critical section
 
-		tempTime = System.nanoTime() - tempTime;
-		critTime += tempTime;
-		thoughts++;
-		System.out.println(name + " is thinking");
+	    if(Driver.waiter(fork1,fork2)==true){//if both forks are available pick them up and start eating
+
+		tempTime = System.nanoTime() - tempTime;//stop critical timer
+		critTime += tempTime;//update total critical time
+		meals++;//inc meal counter
+		System.out.println(name + " is eating");//used for time variance
+		Driver.releaseForks(fork1,fork2);//put down the forks in use
 
 	    }
-		
+	    else{//if forks are not available
+
+		tempTime = System.nanoTime() - tempTime;//stop critical timer
+		critTime += tempTime;//update total critical time
+
+	    }
+
  	}
 
-	time = System.nanoTime() - time;
+	time = System.nanoTime() - time;//stop total time
 	
     }
     
-    public Philosopher(String inName, int forkId1, int forkId2){
+    public Philosopher(String inName, int forkId1, int forkId2){//constructor to initalize instance variables
 
 	//initialize all object variables
 	this.name = inName;
@@ -55,7 +65,8 @@ public class Philosopher implements Runnable{
 	this.critTime = 0;
 
     }
-
+    //All getters and setters for instance variables
+    
     public String getName(){
 
 	return this.name;

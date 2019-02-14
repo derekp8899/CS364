@@ -72,7 +72,8 @@ public class Driver{//Driver that holds main method
 	echo.setStop(true);
 	
 	Thread.sleep(1);//ensure all threads exit before printing stats
-
+	System.out.println("\n");//add some whitespace for output
+	
 	//Print stats for alpha
 	System.out.println("-Alpha Stats-");
 	System.out.println("  Thoughts: " + alpha.getThoughts() + " Meals: " + alpha.getMeals());
@@ -80,7 +81,8 @@ public class Driver{//Driver that holds main method
 	System.out.println("  Critical time (ns): " + alpha.getCritTime());
 	double ratio =(double) alpha.getCritTime() / alpha.getTime();
 	System.out.println("  Time ratio Critical / Total: " + ratio);
-
+	System.out.println();
+	
 	//print stats for bravo
 	System.out.println("-Bravo Stats-");
 	System.out.println("  Thoughts: " + bravo.getThoughts() + " Meals: " + bravo.getMeals());
@@ -88,7 +90,8 @@ public class Driver{//Driver that holds main method
 	System.out.println("  Critical time (ns): " + bravo.getCritTime());
 	ratio =(double) bravo.getCritTime() / bravo.getTime();
 	System.out.println("  Time ratio Critical / Total: " + ratio);
-
+	System.out.println();
+	
 	//print stats for charlie
 	System.out.println("-Charlie Stats-");
 	System.out.println("  Thoughts: " + charlie.getThoughts() + " Meals: " + charlie.getMeals());
@@ -96,7 +99,8 @@ public class Driver{//Driver that holds main method
 	System.out.println("  Critical time (ns): " + charlie.getCritTime());
 	ratio =(double) charlie.getCritTime() / charlie.getTime();
 	System.out.println("  Time ratio Critical / Total: " + ratio);
-
+	System.out.println();
+	
 	//print stats for delta
 	System.out.println("-Delta Stats-");
 	System.out.println("  Thoughts: " + delta.getThoughts() + " Meals: " + delta.getMeals());
@@ -104,7 +108,8 @@ public class Driver{//Driver that holds main method
 	System.out.println("  Critical time (ns): " + delta.getCritTime());
 	ratio =(double) delta.getCritTime() / delta.getTime();
 	System.out.println("  Time ratio Critical / Total: " + ratio);
-
+	System.out.println();
+	
 	//print stats for echo
 	System.out.println("-Echo Stats-");
 	System.out.println("  Thoughts: " + echo.getThoughts() + " Meals: " + echo.getMeals());
@@ -112,6 +117,7 @@ public class Driver{//Driver that holds main method
 	System.out.println("  Critical time (ns): " + echo.getCritTime());
 	ratio =(double) echo.getCritTime() / echo.getTime();
 	System.out.println("  Time ratio Critical / Total: " + ratio);
+	System.out.println();
 	
     }
     

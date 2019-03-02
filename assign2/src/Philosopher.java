@@ -23,7 +23,7 @@ public class Philosopher implements Runnable{//Philosopher objects that implemen
 	//init loop vars
 	tempTime = 0;
 	critTime = 0;
-	time = System.nanoTime();
+	time = System.nanoTime();//start total timer
 
 	while(!stop){//while stop condition is not set in main
 
@@ -49,7 +49,7 @@ public class Philosopher implements Runnable{//Philosopher objects that implemen
 
  	}
 
-	time = System.nanoTime() - time;//stop total time
+	time = System.nanoTime() - time;//stop total timer
 	
     }
     

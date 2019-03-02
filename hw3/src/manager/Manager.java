@@ -95,7 +95,7 @@ public class Manager implements BrokerConfig {
 			Object obj = om.getObject();
 			if (obj instanceof Worker) {
 			    Worker in = (Worker)obj;
-			    System.out.println("Computed result: " + in.getWorkResults());
+			    System.out.println(in.getWorkResults());
 			} else {
 			    System.out.println("Unknown object");
 			}

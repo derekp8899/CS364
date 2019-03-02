@@ -38,7 +38,7 @@ public class PrimeChecker extends Worker {
 	}
 	
 	public String getWorkResults() {
-		return "" + prime;
+	    return "ID: "+ super.getTaskId()+", "+ "Input: " + value + ". " + "Output: " + prime;
 	}
 	
 	/**

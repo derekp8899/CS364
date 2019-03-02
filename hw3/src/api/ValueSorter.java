@@ -30,9 +30,9 @@ public class ValueSorter extends Worker {
 	for(int i = 1; i < val.length; i++)	    
 	    sorted[i-1] = val[i];
 
-	for(String t:value)
-	    System.out.println("DEBUG: "+t);
-	System.out.println("DEBUG SIZE: " + value.length);
+	//	for(String t:value)
+	//	    System.out.println("DEBUG: "+t);
+	//	System.out.println("DEBUG SIZE: " + value.length);
     }
     
     /* (non-Javadoc)
@@ -45,12 +45,12 @@ public class ValueSorter extends Worker {
     
     public String getWorkResults() {
 	String rtString;
-	rtString = "Input: ";
+	rtString = "ID: " + super.getTaskId()+ ", " +"Input: ";
 	for(int i = 0 ; i < 3;i++)
-	    rtString = rtString + value[i];
-	rtString = rtString + " Output: ";
+	    rtString = rtString + value[i] + " ";
+	rtString = rtString + ". Output: ";
 	for(int i = 0 ; i < 3;i++)
-	    rtString = rtString + sorted[i];
+	    rtString = rtString + sorted[i] + " ";
 
 	return rtString;
 	

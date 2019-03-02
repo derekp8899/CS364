@@ -51,7 +51,9 @@ public class FractionReducer extends Worker {
     }
     
     public String getWorkResults() {
-	String rtString = reduced[0] +"/" + reduced[1];
+	String rtString;
+	rtString = "ID: " + super.getTaskId() + ", Input: " + value[0] + " " + value[1];
+	rtString = rtString + ". Output: " + reduced[0] +"/" + reduced[1];
 	return rtString;
 	}
     

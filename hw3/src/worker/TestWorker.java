@@ -80,8 +80,7 @@ public class TestWorker implements BrokerConfig {
 			}
 			if(msgArgs.length == 4){
 			    workerId = Integer.parseInt(msgArgs[0]);
-			    data1 = Integer.parseInt(msgArgs[1]);
-			    worker = new ValueSorter(workerId, data1);
+			    worker = new ValueSorter(workerId, msgArgs);
 			    worker.doWork();
 			}
 			/*

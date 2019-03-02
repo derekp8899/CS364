@@ -88,7 +88,7 @@ public class Manager implements BrokerConfig {
 		    System.out.println("IOException while trying to read input file\n-EXITING-\n");
 		    System.exit(-1);
 		}
-		for(int i = 1; i < jobsSent; i++){
+		for(int i = 0; i < jobsSent; i++){
 		    Message message = consumer.receive();
 		    if (message instanceof ObjectMessage) {
 			ObjectMessage om = (ObjectMessage)message;

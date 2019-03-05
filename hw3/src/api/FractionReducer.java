@@ -2,7 +2,7 @@
  *   derek.a.popowski@und.edu
  *   CSci 364
  *   Program 3 - FractionReducer worker Class
- *   Fraction Reucer class implementing the Worker abstract class
+ *   Fraction Reducer class implementing the Worker abstract class
  */
 package api;
 
@@ -34,7 +34,7 @@ public class FractionReducer extends Worker {
     @Override
     public void doWork() {
 	int GCF = 1;
-	if(value[0] < value[1]){
+	if(value[0] < value[1]){//find lower value and test for GCF
 	    for(int i = 1; i <= value[0];i++){
 		if((value[0]%i) == 0 && (value[1]%i) == 0)
 		    GCF = i;
@@ -47,15 +47,15 @@ public class FractionReducer extends Worker {
 	    }
 	}
 	reduced[0] = value[0]/GCF;
-	reduced[1] = value[1]/GCF;
+	reduced[1] = value[1]/GCF;//set the reduced values
     }
     
-    public String getWorkResults() {
+    public String getWorkResults() {//create the output string
 	String rtString;
 	rtString = "ID: " + super.getTaskId() + ", Input: " + value[0] + " " + value[1];
 	rtString = rtString + ". Output: " + reduced[0] +"/" + reduced[1];
 	return rtString;
-	}
+    }
     
     /**
      * Test harness

@@ -1,14 +1,17 @@
 /**
- * PrimeChecker.java
+ * Derek Popowski
+ * derek.a.popowski@und.edu
+ * CSci365 Concurrent and Distributed Programming
+ * ValueSorter.java
  */
 package api;
 
 import java.util.Arrays;
 
 /**
- * A not particularly efficient way to test if an integer is prime.
+ * Sorts the input array
  * 
- * @author david apostal
+ * @author Derek Popowski
  */
 public class ValueSorter extends Worker {
     /**
@@ -19,20 +22,16 @@ public class ValueSorter extends Worker {
     private boolean prime = true;
     private String[] sorted;
     /**
-     * @param id
+     * @param id,val
      */
     public ValueSorter(int id, String[] val) {
 	super(id);
 	value = new String[val.length -1];
 	sorted = new String[val.length -1];
-	for(int i = 1; i < val.length; i++)	    
+	for(int i = 1; i < val.length; i++)//to store the original values    
 	    value[i-1] = val[i];
-	for(int i = 1; i < val.length; i++)	    
+	for(int i = 1; i < val.length; i++)//to store the sorted values
 	    sorted[i-1] = val[i];
-
-	//	for(String t:value)
-	//	    System.out.println("DEBUG: "+t);
-	//	System.out.println("DEBUG SIZE: " + value.length);
     }
     
     /* (non-Javadoc)
@@ -40,10 +39,10 @@ public class ValueSorter extends Worker {
      */
     @Override
     public void doWork() {
-	Arrays.sort(sorted);
+	Arrays.sort(sorted);//sort the array with standard Array.sort method
     }
     
-    public String getWorkResults() {
+    public String getWorkResults() {//generate the output string
 	String rtString;
 	rtString = "ID: " + super.getTaskId()+ ", " +"Input: ";
 	for(int i = 0 ; i < 3;i++)
@@ -53,7 +52,6 @@ public class ValueSorter extends Worker {
 	    rtString = rtString + sorted[i] + " ";
 
 	return rtString;
-	
     }
     
     /**
@@ -61,10 +59,5 @@ public class ValueSorter extends Worker {
      * @param args There are no arguments.
      */
     public static void main(String[] args) {
-	int num = Integer.parseInt(args[0]);
-	int taskId = 1;
-	PrimeChecker pc = new PrimeChecker(taskId, num);
-	pc.doWork();
-	System.out.println(num + " is prime. " +  pc.getWorkResults());
     }
 }

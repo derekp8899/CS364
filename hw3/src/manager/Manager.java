@@ -1,6 +1,7 @@
-/**  Derek Popowski
+/**
+ *   Derek Popowski
  *   derek.a.popowski@und.edu
- *   CSci 364
+ *   CSci 364 Concurrent and Distributed Programming
  *   Program 3 - Manager Class
  *   Create the messages for the workers to process and sends them to the activemq queue
  */
@@ -23,7 +24,7 @@ import javax.jms.MessageProducer;
 import javax.jms.ObjectMessage;
 import javax.jms.Session;
 import javax.jms.TextMessage;
-//import activemq Commections
+//import activemq Connections
 import org.apache.activemq.ActiveMQConnectionFactory;
 //import api from hw3
 import api.BrokerConfig;
@@ -60,42 +61,41 @@ public class Manager implements BrokerConfig {
 		MessageConsumer consumer = session.createConsumer(workerQueue);
 		
 		connection.start();
-		
-		// create the JMS message
+				
 		// check the file for the message and send to the queue
 		BufferedReader fileReader = null;
 		try{
 		    fileReader = new BufferedReader(new FileReader(inFile));//for reading lines from the file
 		}
-		catch(FileNotFoundException e){
+		catch(FileNotFoundException e){//error if the input file is not found
 		    System.out.println("Specified File Not Found Please Try Again.");
 		    System.exit(-1);
 		}
 
 		String msgString;//store the current line
-		int jobsSent = 0;
+		int jobsSent = 0;//count of the number of messages sent to the queue
 		try{
 		    while((msgString = fileReader.readLine()) != null){//while there are still lines to be read from the file
 			TextMessage textMessage = session.createTextMessage(msgString);
 			producer.send(textMessage);
 			jobsSent++;
 		    }
-		    	TextMessage textMessage = session.createTextMessage("done");
+		    TextMessage textMessage = session.createTextMessage("done");//signal the end of the file to the workers
 			producer.send(textMessage);
 		
 		}
-		catch(IOException e){
+		catch(IOException e){//error if the file was opened but cannot read from the file
 		    System.out.println("IOException while trying to read input file\n-EXITING-\n");
 		    System.exit(-1);
 		}
-		for(int i = 0; i < jobsSent; i++){
+		for(int i = 0; i < jobsSent; i++){//receive the number of messages equal to the number of messages sent
 		    Message message = consumer.receive();
 		    if (message instanceof ObjectMessage) {
 			ObjectMessage om = (ObjectMessage)message;
 			Object obj = om.getObject();
 			if (obj instanceof Worker) {
-			    Worker in = (Worker)obj;
-			    System.out.println(in.getWorkResults());
+			    Worker in = (Worker)obj;//cast to worker
+			    System.out.println(in.getWorkResults());//use get results method to generate the output string
 			} else {
 			    System.out.println("Unknown object");
 			}

@@ -1,5 +1,8 @@
 /**
- * 
+ * Derek Popowski
+ * derek.a.popowski@und.edu
+ * CSci 365 Concurrent and Distributed Programming
+ * TestWorker.java
  */
 package worker;
 
@@ -25,7 +28,7 @@ import api.ValueSorter;
 import api.Worker;
 
 /**
- * @author david
+ * @author david + Derek Popowski
  *
  */
 public class TestWorker implements BrokerConfig {
@@ -83,12 +86,7 @@ public class TestWorker implements BrokerConfig {
 			    worker = new ValueSorter(workerId, msgArgs);
 			    worker.doWork();
 			}
-			/*
-			  else{
-			  System.out.println("Unrecognized Message: Too many or too few args in the row");
-			  System.exit(-1);
-			  }
-			*/		    
+
 			ObjectMessage objectMessage = session.createObjectMessage(worker);
 			producer.send(objectMessage);
 		    } catch (NumberFormatException nfe) {
@@ -106,7 +104,6 @@ public class TestWorker implements BrokerConfig {
 	} 
 	
     }
-    
     private static void print(String msg) {
 	System.out.println(msg);
     }

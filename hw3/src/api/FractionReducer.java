@@ -35,13 +35,13 @@ public class FractionReducer extends Worker {
     public void doWork() {
 	int GCF = 1;
 	if(value[0] < value[1]){
-	    for(int i = 1; i < value[0];i++){
+	    for(int i = 1; i <= value[0];i++){
 		if((value[0]%i) == 0 && (value[1]%i) == 0)
 		    GCF = i;
 	    }
 	}
 	else{
-	    for(int i = 1; i < value[1];i++){
+	    for(int i = 1; i <= value[1];i++){
 		if((value[1]%i) == 0 && (value[0]%i) == 0)
 		    GCF = i;
 	    }

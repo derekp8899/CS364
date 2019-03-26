@@ -24,13 +24,13 @@ import org.apache.activemq.ActiveMQConnectionFactory;
 
 public class Driver{
 
-    public static void main(String[] args){
+    public static void main(String[] args)throws InterruptedException{
 	
-	ActiveMQConnectionFactory factory = new ActiveMQConnactionFactory("tcp://localhost:61616");
+	ActiveMQConnectionFactory factory = new ActiveMQConnectionFactory("tcp://localhost:61616");
 	Connection connection = null;
 	try{
 	    connection = factory.createConnection();
-	    Session session = connection.createSession(false, Session.AUTO_ACKKNOWLEDGE);
+	    Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
 	    Destination waiterQueue = session.createQueue("hw4.queue.Waiter");
 	    Destination alphaQueue = session.createQueue("hw4.queue.Alpha");
 	    Destination bravoQueue = session.createQueue("hw4.queue.Bravo");
@@ -60,7 +60,9 @@ public class Driver{
 	    Philosopher charlie;
 	    Philosopher delta;
 	    Philosopher echo;
-	    Waiter waiter();
+	    Waiter waiter;
+
+	    Thread.sleep(100000);
 	    
 	}
 	catch (JMSException e){

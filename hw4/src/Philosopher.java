@@ -10,3 +10,19 @@ implements Runnable
 uses JMS messaging to determine when forks are available
 
 */
+
+public class Philosopher implements Runnable{
+
+    public void Philosopher(){
+
+
+
+    }
+	
+    public void run(){
+
+
+
+    }
+
+}

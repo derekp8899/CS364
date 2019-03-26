@@ -9,3 +9,19 @@ Waiter class
 contains fork usage data and signals philosophers when they are available to pickup with jms messages
 
 */
+
+public class Waiter implements Runnable{
+
+    public void Waiter(){
+
+
+
+    }
+    
+    public void run(){
+
+
+
+    }
+
+}

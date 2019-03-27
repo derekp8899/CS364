@@ -76,6 +76,41 @@ public class Waiter implements Runnable{
 	    }
 
 	}
+	System.out.println("waiter stop attempting to clear queue");
+	while(true){
+	    try{
+		Message message = consumer.receive(100);
+		if(message == null){
+		    System.out.println("Last message dequeued");
+		    break;
+		}
+		TextMessage msg = (TextMessage)message;
+		String msgTxt = msg.getText();
+		int id = -1;//set defaults as sentinel values
+		String action = "";
+		try{
+		    id = Integer.parseInt(msgTxt.split(",")[0]);
+		    action = msgTxt.split(",")[1];
+		}
+		catch(Exception e){
+		    System.out.println("Exception while trying to parse message\n--EXITING--");
+		    System.exit(1);
+		}
+		if(action.equals("pickup")){
+		    System.out.println("waiter: " + action + id);
+		    pickUp(id);
+		}
+		else{
+		    release(id);
+		}
+	    }
+	    catch(JMSException e){
+		System.out.println("Exception while trying to consume message\n--EXITING--");
+		System.exit(1);
+	    }
+
+	}
+	return;
 
     }
 

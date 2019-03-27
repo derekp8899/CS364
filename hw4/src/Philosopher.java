@@ -75,6 +75,7 @@ public class Philosopher implements Runnable{
 		System.exit(1);
 	    }
 	}
+	System.out.println(id + ": stop rec");
 	timeTot = System.nanoTime() - timeTot;
 
     }

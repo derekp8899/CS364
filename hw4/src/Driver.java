@@ -96,15 +96,16 @@ public class Driver{
 	    charlie.setStop(true);
 	    delta.setStop(true);
 	    echo.setStop(true);
-
-	    Thread.sleep(100);
 	    
+	    System.out.println("stops set");
+	    //Thread.sleep(100);
+	    /*
 	    System.out.println(alpha.toString());
 	    System.out.println(bravo.toString());
 	    System.out.println(charlie.toString());
 	    System.out.println(delta.toString());
 	    System.out.println(echo.toString());
-
+	    */
 	    
 	    t0.join();
 	    t1.join();

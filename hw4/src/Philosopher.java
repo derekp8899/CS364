@@ -16,6 +16,7 @@ import javax.jms.Message;
 import javax.jms.MessageConsumer;
 import javax.jms.MessageProducer;
 import javax.jms.TextMessage;
+import javax.jms.Session;
 
 public class Philosopher implements Runnable{
 
@@ -27,8 +28,9 @@ public class Philosopher implements Runnable{
     private double timeCrit;
     private int meals;
     private int thoughts;
+    private Session session;
 
-    public void Philosopher(MessageConsumer inQueue, MessageProducer wait, int id){
+    public void Philosopher(MessageConsumer inQueue, MessageProducer wait, Session sess,int id){
 	this.stop = false;
 	this.id = id;
 	this.consumer = inQueue;
@@ -37,6 +39,7 @@ public class Philosopher implements Runnable{
 	timeCrit = 0;
 	meals = 0;
 	thoughts = 0;
+	session = sess;
     }
 	
     public void run(){

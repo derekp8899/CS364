@@ -24,13 +24,14 @@ public class Philosopher implements Runnable{
     private int id;
     private MessageConsumer consumer;
     private MessageProducer waiter;
-    private double timeTot;
-    private double timeCrit;
+    private long timeTot;
+    private long timeCrit;
+    private long tempTime;
     private int meals;
     private int thoughts;
     private Session session;
 
-    public void Philosopher(MessageConsumer inQueue, MessageProducer wait, Session sess,int id){
+    public Philosopher(MessageConsumer inQueue, MessageProducer wait, Session sess,int id){
 	this.stop = false;
 	this.id = id;
 	this.consumer = inQueue;
@@ -43,14 +44,53 @@ public class Philosopher implements Runnable{
     }
 	
     public void run(){
-
+	
+	timeTot = System.nanoTime();//total time timer
 	while(!stop){
-	    
+	    thoughts++;//do one think cycle
+	    tempTime = System.nanoTime();//start timer
+	    try{
+		String msg = id + ",pickup";
+		TextMessage txtMsg = session.createTextMessage(msg);
+		waiter.send(txtMsg);
+		System.out.println(id + " send pickup req");
+		Message inMsg = consumer.receive();
+		TextMessage inTxtMsg = (TextMessage)inMsg;
+		String msgTxt = inTxtMsg.getText();
+		System.out.println(id + "rec " + msgTxt);
+		if(msgTxt.equals("true")){
+		    meals++;
+		    timeCrit = System.nanoTime() - tempTime;
+		    msg = id + ",release";
+		    txtMsg = session.createTextMessage(msg);
+		    waiter.send(txtMsg);
+		    System.out.println(id + "sent release");
+		}
+		else{
+		    timeCrit = System.nanoTime() - tempTime;
+		}
+	    }
+	    catch(JMSException e){
+		System.out.println("Caught JMSException in Philosopher " + id + " \n--EXITING--");
+		System.exit(1);
+	    }
 	}
+	timeTot = System.nanoTime() - timeTot;
 
     }
 
     public void setStop(boolean flag){
 	stop = flag;
+    }
+    
+    public String toString(){
+	String rtStr;
+	rtStr = "Philosopher ID: " + id + "\n";
+	rtStr = rtStr + "   Thoughts: " + thoughts +  " Meals: " + meals +  "\n";
+	rtStr = rtStr + "   Critical time(ns): " + timeCrit + "\n";
+	rtStr = rtStr + "   Total Time(ns): " + timeTot + "\n";
+	rtStr = rtStr + "   Time Ratio -- Critical/Total: " + (double)timeCrit/timeTot;
+	return rtStr;
+	
     }
 }

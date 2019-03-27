@@ -29,7 +29,7 @@ public class Waiter implements Runnable{
     private MessageProducer eProd;
     private Session session;
 
-    public void Waiter(MessageProducer alpha, MessageProducer bravo, MessageProducer charlie, MessageProducer delta, 
+    public Waiter(MessageProducer alpha, MessageProducer bravo, MessageProducer charlie, MessageProducer delta, 
 		       MessageProducer echo, MessageConsumer inQueue, Session sess){
 	aProd = alpha;
 	bProd = bravo;
@@ -39,6 +39,9 @@ public class Waiter implements Runnable{
 	consumer = inQueue;
 	stop = false;
 	forks = new boolean[5];
+	for(int i = 0; i < 5; i++){
+	    forks[i] = true;
+	}
 	session = sess;
     }
     
@@ -60,6 +63,7 @@ public class Waiter implements Runnable{
 		    System.exit(1);
 		}
 		if(action.equals("pickup")){
+		    System.out.println("waiter: " + action + id);
 		    pickUp(id);
 		}
 		else{
@@ -89,6 +93,7 @@ public class Waiter implements Runnable{
 		    msg = "true";
 		    TextMessage textMes = session.createTextMessage(msg);
 		    aProd.send(textMes);
+		    System.out.println("waiter: " + id + "sent true");
 		}
 		else{
 		    msg = "false";

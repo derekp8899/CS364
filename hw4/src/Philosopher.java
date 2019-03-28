@@ -53,18 +53,15 @@ public class Philosopher implements Runnable{
 		String msg = id + ",pickup";
 		TextMessage txtMsg = session.createTextMessage(msg);
 		waiter.send(txtMsg);
-		System.out.println(id + " send pickup req");
 		Message inMsg = consumer.receive();
 		TextMessage inTxtMsg = (TextMessage)inMsg;
 		String msgTxt = inTxtMsg.getText();
-		System.out.println(id + "rec " + msgTxt);
 		if(msgTxt.equals("true")){
 		    meals++;
 		    timeCrit = System.nanoTime() - tempTime;
 		    msg = id + ",release";
 		    txtMsg = session.createTextMessage(msg);
 		    waiter.send(txtMsg);
-		    System.out.println(id + "sent release");
 		}
 		else{
 		    timeCrit = System.nanoTime() - tempTime;
@@ -75,9 +72,8 @@ public class Philosopher implements Runnable{
 		System.exit(1);
 	    }
 	}
-	System.out.println(id + ": stop rec");
 	timeTot = System.nanoTime() - timeTot;
-
+	
     }
 
     public void setStop(boolean flag){

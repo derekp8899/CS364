@@ -63,6 +63,7 @@ public class Waiter implements Runnable{
 		    System.exit(1);
 		}
 		if(action.equals("pickup")){
+		    System.out.println("waiter: " + action + id);
 		    pickUp(id);
 		}
 		else{
@@ -75,10 +76,12 @@ public class Waiter implements Runnable{
 	    }
 
 	}
+	System.out.println("waiter stop attempting to clear queue");
 	while(true){
 	    try{
 		Message message = consumer.receive(100);
 		if(message == null){
+		    System.out.println("Last message dequeued");
 		    break;
 		}
 		TextMessage msg = (TextMessage)message;
@@ -94,6 +97,7 @@ public class Waiter implements Runnable{
 		    System.exit(1);
 		}
 		if(action.equals("pickup")){
+		    System.out.println("waiter: " + action + id);
 		    pickUp(id);
 		}
 		else{
@@ -124,6 +128,7 @@ public class Waiter implements Runnable{
 		    msg = "true";
 		    TextMessage textMes = session.createTextMessage(msg);
 		    aProd.send(textMes);
+		    System.out.println("waiter: " + id + "sent true");
 		}
 		else{
 		    msg = "false";

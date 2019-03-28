@@ -97,7 +97,15 @@ public class Driver{
 	    delta.setStop(true);
 	    echo.setStop(true);
 	    
-	    System.out.println("Stop signal sent to all threads");
+	    System.out.println("stops set");
+	    //Thread.sleep(100);
+	    /*
+	    System.out.println(alpha.toString());
+	    System.out.println(bravo.toString());
+	    System.out.println(charlie.toString());
+	    System.out.println(delta.toString());
+	    System.out.println(echo.toString());
+	    */
 	    
 	    t0.join();
 	    t1.join();
@@ -105,6 +113,8 @@ public class Driver{
 	    t3.join();
 	    t4.join();
 	    t5.join();
+	    
+	    Thread.sleep(1);
 	    
 	    System.out.println(alpha.toString());
 	    System.out.println(bravo.toString());

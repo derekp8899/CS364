@@ -102,7 +102,7 @@ public class Driver{
 	    delta.setStop(true);
 	    echo.setStop(true);
 	    
-	    System.out.println("stops set");
+	    System.out.println("Sending stop signal to threads.");
 	    //Thread.sleep(100);
 	    /*
 	    System.out.println(alpha.toString());
@@ -119,7 +119,7 @@ public class Driver{
 	    t4.join();
 	    t5.join();
 	    
-	    Thread.sleep(1);
+	    System.out.println("Dinner is done.");
 	    
 	    System.out.println(alpha.toString());
 	    System.out.println(bravo.toString());

@@ -10,6 +10,8 @@ Matrix multiplication with openMP
 #include <iostream>
 #include <random>
 
+using namespace std;x
+
 int main(int argc, char* argv[]){
 
   int print = 0;
@@ -62,7 +64,7 @@ int main(int argc, char* argv[]){
   for(int i = 0; i < size; i++)
     for(int j = 0; j < size; j++)
       S[i][j]=0;
-
+  //do the multiplication
   int rSum;
   for(int i = 0; i < size; i++){
     for(int j = 0; j < size; j++){

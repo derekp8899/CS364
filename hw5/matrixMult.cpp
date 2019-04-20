@@ -103,7 +103,7 @@ int main(int argc, char* argv[]){
   int i=0;
   int j=0;
   int k=0;
-  #pragma omp parallel for private(j,k,rSum) schedule (static, 1) 
+  #pragma omp parallel for private(j,k,rSum) schedule (dynamic, 1) 
   for(i = 0; i < size; i++){
     for(j = 0; j < size; j++){
       rSum = 0;
